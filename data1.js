@@ -15,7 +15,13 @@ $(document).ready(function()
                     output+="<tr>";
                     output+="<td>"+  p[i].id+"</td>";
                     output+="<td>"+ p[i].title+"</td>";
+                    if(p[i].completed==true)
+                    {
+                        output+="<td><input type='checkbox' checkbox checked id='cb1' disabled></td></tr>";
+                    }
+                    else
                     output+="<td><input type='checkbox' id='cb1'></td></tr>";
+                    
                     //output+="<td>"+p[i].publishedAt+"</td>";
                 }
                 

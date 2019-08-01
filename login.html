@@ -6,70 +6,57 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script>
-            
-    $(document).ready(function()
-    {
-        $("#submit").click(function()
-        {
-                var un=$("#uname").val();
-                var pd=$("#pswd").val();
-                var msg="";
-                    function login(user,pwd,callback)
-                    {
-                        if(un=="admin" & pd=="12345")
-                        {
-                            msg="login successful";
-                            alert(msg);
-                        }
-                            
-                        else
-                        {
-                            msg="Incorrect credentials, Login failed!";
-                            $("#uname").focus();
-                            alert(msg);
-                        }
-
-                        callback(msg);
-                    }
-        
-
-                   
-            login(un,pd,(msg)=>
-            {
-                //alert(msg);
-                if(msg=="login successful")
-                {
-                    console.log(msg);
-                    //window.location.href="todo.html";
-                }
-                    
-                //else
-                //window.location.href="login.html";
-                
-            });
-        });
-
-    });
-           
-    </script>
+   
     <title>Login</title>
 </head>
-<body>
-    <form>
-            
-            <div class="container" style="text-align: center; margin-top:100px">
+<body style="background: #1a8cff">
+            <div class="container" style="text-align: center; margin-top:100px;">
                 <div class="row">
-                      <div class="col col-4" style=" border: 1px solid black; background: #ccf2ff">
+                      <div class="col-6" style=" border: 0px solid black; background: #80bfff">
                             <br>
-                                <input type="text" id="uname" placeholder="username"  style="margin: 1px;"/><br>
-                                <input type="password" id="pswd" placeholder="current-password" style="margin:2px;"/><br>
+                                <input type="text" id="uname" placeholder="username"  style="margin: 2px;"/><br>
+                                <input type="password" id="pswd" placeholder="password" style="margin:2px;"/><br>
                                 <br>
-                                <button id="submit" class="btn btn-success">Login</button><br><br>
+                                <button id="chk" class="btn btn-success">Login</button><br><br>
                     </div>
                 </div>
             </div>
-    </form>
-    
+
+    <script>    
+            
+            $(document).ready(function()
+            {
+                $("#chk").click(function()
+                {
+                        var un=$("#uname").val();
+                        var pd=$("#pswd").val();
+                        
+                            function login(user,pwd,callback)
+                            {
+                                if(user=="admin" && pwd=="12345")
+                                   { callback(0);}
+                                else
+                                  { callback(1);}
+        
+                            }
+                
+                           
+                    login(un,pd,(msg)=>
+                    {
+                        //console.log(msg);
+                        if(msg==0)
+                        {
+                         alert("login successful");
+                            window.location.href="todo.html";
+                        }
+                            
+                        else if(msg==1)
+                            alert("Incorrect credentials, Login failed!");
+                    });
+                });
+        
+            });
+                   
+</script>
 </body>
 </html>
